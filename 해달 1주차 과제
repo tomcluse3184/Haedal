@@ -1,0 +1,56 @@
+//문제 1
+#include <stdio.h> 
+
+int main(void) {
+    int A, B;
+    
+    // 두 정수 입력
+    scanf("%d %d", &A, &B);
+    
+    // 사칙연산 및 나머지 연산 출력
+    printf("%d\n", A + B);  // 덧셈
+    printf("%d\n", A - B);  // 뺄셈
+    printf("%d\n", A * B);  // 곱셈
+    printf("%d\n", A / B);  // 나눗셈(몫)
+    printf("%d\n", A % B);  // 나머지
+    
+    return 0;
+}
+
+
+//문제 2
+#include <stdio.h>
+
+int main(void) {
+    char ch;
+    
+    // 문자 입력
+    scanf("%c", &ch);
+    
+    // 아스키 코드값 출력
+    printf("%d\n", ch);
+    
+    return 0;
+}
+
+
+//문제 3
+#include <stdio.h>
+
+int main(void) {
+    int A, B, C;
+    scanf("%d %d %d", &A, &B, &C);
+
+    int left = (A + B) % C;
+    int right = ((A % C) + (B % C)) % C;
+
+    printf("(A + B) %% C = %d\n", left);
+    printf("((A %% C) + (B %% C)) %% C = %d\n", right);
+
+    if (left == right)
+        printf("두 식은 같습니다.\n");
+    else
+        printf("두 식은 다릅니다.\n");
+
+    return 0;
+}
