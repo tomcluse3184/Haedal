@@ -1,0 +1,120 @@
+//윤년
+#include <stdio.h>
+
+int main(void) {
+    int year;
+    scanf("%d", &year);
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        printf("1\n");  // 윤년
+    } else {
+        printf("0\n");  // 평년
+    }
+
+    return 0;
+}
+
+//알람 시계
+#include <stdio.h>
+
+int main(void) {
+    int H, M;
+    scanf("%d %d", &H, &M);
+
+    M -= 45; // 45분을 뺀다
+
+    if (M < 0) {   // 분이 음수가 되면
+        M += 60;   // 1시간에서 빌려온다
+        H--;       // 시(hour)를 1 줄인다
+
+        if (H < 0) { // 시간이 음수가 되면
+            H = 23;  // 전날 23시로 바꾼다
+        }
+    }
+
+    printf("%d %d\n", H, M);
+
+    return 0;
+}
+
+//구구단
+#include <stdio.h>
+
+int main(void) {
+    int N;
+    scanf("%d", &N);
+
+    for (int i = 1; i <= 9; i++) {
+        printf("%d * %d = %d\n", N, i, N * i);
+    }
+
+    return 0;
+}
+
+//별 찍기
+#include <stdio.h>
+
+int main(void) {
+    int N;
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        // 공백 출력 (오른쪽 정렬을 위해)
+        for (int j = 1; j <= N - i; j++) {
+            printf(" ");
+        }
+        // 별 출력
+        for (int k = 1; k <= i; k++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+// 영수증
+#include <stdio.h>
+
+int main(void) {
+    int X;  // 영수증에 적힌 총 금액
+    int N;  // 구매한 물건 종류의 수
+    int a, b;
+    int sum = 0;
+
+    scanf("%d", &X);
+    scanf("%d", &N);
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d", &a, &b); // 가격, 개수
+        sum += a * b;
+    }
+
+    if (sum == X) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
+    }
+
+    return 0;
+}
+
+//피보나치
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    scanf("%d", &n);
+
+    long long fib[91];  // n이 최대 90까지 가능 (int 범위 초과 가능성 때문에 long long 사용)
+    fib[0] = 0;
+    fib[1] = 1;
+
+    for (int i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+
+    printf("%lld\n", fib[n]);
+
+    return 0;
+}
