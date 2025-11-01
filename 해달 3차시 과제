@@ -1,10 +1,10 @@
+// 최댓값
 #include <stdio.h>
 
 int main(void) {
     int num[9];
     int max, index;
 
-    // 9개의 자연수 입력 받기
     for (int i = 0; i < 9; i++) {
         scanf("%d", &num[i]);
     }
@@ -12,16 +12,85 @@ int main(void) {
     max = num[0];
     index = 1;
 
-    // 최댓값과 그 위치 찾기
     for (int i = 1; i < 9; i++) {
         if (num[i] > max) {
             max = num[i];
-            index = i + 1;  // 배열은 0부터 시작하므로 +1
+            index = i + 1;  
         }
     }
 
-    // 결과 출력
     printf("%d\n%d\n", max, index);
+
+    return 0;
+}
+
+//문자열
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char str[1001]; 
+
+    scanf("%s", str);  
+    int len = strlen(str);  
+
+    printf("%c%c\n", str[0], str[len - 1]); 
+    return 0;
+}
+
+//문자열 반복
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    int T; 
+    scanf("%d", &T);
+
+    for (int t = 0; t < T; t++) {
+        int R;
+        char S[21]; 
+        scanf("%d %s", &R, S);
+
+        int len = strlen(S);
+
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < R; j++) {
+                printf("%c", S[i]);
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+//행렬 덧셈
+#include <stdio.h>
+
+int main(void) {
+    int N, M;
+    int A[100][100], B[100][100];
+
+    scanf("%d %d", &N, &M);
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            printf("%d ", A[i][j] + B[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
