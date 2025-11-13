@@ -1,1 +1,66 @@
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
 
+#define MAX 100
+
+typedef struct {
+    char task[100];
+    char created[40];
+    char completed[40];
+    int done;
+} Todo;
+
+Todo list[MAX];
+int count = 0;
+
+void getTime(char *buf) {
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    sprintf(buf, "%04d-%02d-%02d %02d:%02d:%02d",
+            tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
+            tm->tm_hour, tm->tm_min, tm->tm_sec);
+}
+
+int main() {
+    int cmd, n;
+
+    while (1) {
+        printf("\n1:추가  2:완료  3:보기  4:종료 → ");
+        scanf("%d", &cmd);
+
+        if (cmd == 1) { // 추가
+            getchar(); 
+            printf("할 일: ");
+            fgets(list[count].task, 100, stdin);
+            list[count].task[strcspn(list[count].task, "\n")] = '\0';
+
+            getTime(list[count].created);
+            strcpy(list[count].completed, "-");
+            list[count].done = 0;
+            count++;
+
+        } else if (cmd == 2) { // 완료
+            printf("완료할 번호: ");
+            scanf("%d", &n);
+            if (n >= 1 && n <= count && !list[n-1].done) {
+                list[n-1].done = 1;
+                getTime(list[n-1].completed);
+            }
+
+        } else if (cmd == 3) { // 출력
+            for (int i = 0; i < count; i++) {
+                printf("%d. [%s] %s\n", i + 1,
+                       list[i].done ? "완료" : "미완료",
+                       list[i].task);
+                printf("   추가: %s\n", list[i].created);
+                printf("   완료: %s\n", list[i].completed);
+            }
+
+        } else if (cmd == 4) { // 종료
+            break;
+        }
+    }
+
+    return 0;
+}
