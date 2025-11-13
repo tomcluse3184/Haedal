@@ -1,1 +1,133 @@
+//문제 1번
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 10000
+
+int stack[MAX];
+int top_index = -1;
+
+void push(int x) {
+    stack[++top_index] = x;
+}
+
+int pop() {
+    if (top_index == -1) return -1;
+    return stack[top_index--];
+}
+
+int size() {
+    return top_index + 1;
+}
+
+int empty() {
+    return (top_index == -1) ? 1 : 0;
+}
+
+int top() {
+    if (top_index == -1) return -1;
+    return stack[top_index];
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    while (N--) {
+        char cmd[10];
+        scanf("%s", cmd);
+
+        if (strcmp(cmd, "push") == 0) {
+            int x;
+            scanf("%d", &x);
+            push(x);
+        }
+        else if (strcmp(cmd, "pop") == 0) {
+            printf("%d\n", pop());
+        }
+        else if (strcmp(cmd, "size") == 0) {
+            printf("%d\n", size());
+        }
+        else if (strcmp(cmd, "empty") == 0) {
+            printf("%d\n", empty());
+        }
+        else if (strcmp(cmd, "top") == 0) {
+            printf("%d\n", top());
+        }
+    }
+
+    return 0;
+}
+
+
+
+// 문제 2번
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 10000
+
+int queue[MAX];
+int front_idx = 0;
+int back_idx = 0;
+
+void push(int x) {
+    queue[back_idx++] = x;
+}
+
+int pop() {
+    if (front_idx == back_idx) return -1;
+    return queue[front_idx++];
+}
+
+int size() {
+    return back_idx - front_idx;
+}
+
+int empty() {
+    return (front_idx == back_idx) ? 1 : 0;
+}
+
+int front() {
+    if (front_idx == back_idx) return -1;
+    return queue[front_idx];
+}
+
+int back() {
+    if (front_idx == back_idx) return -1;
+    return queue[back_idx - 1];
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    while (N--) {
+        char cmd[10];
+        scanf("%s", cmd);
+
+        if (strcmp(cmd, "push") == 0) {
+            int x;
+            scanf("%d", &x);
+            push(x);
+        }
+        else if (strcmp(cmd, "pop") == 0) {
+            printf("%d\n", pop());
+        }
+        else if (strcmp(cmd, "size") == 0) {
+            printf("%d\n", size());
+        }
+        else if (strcmp(cmd, "empty") == 0) {
+            printf("%d\n", empty());
+        }
+        else if (strcmp(cmd, "front") == 0) {
+            printf("%d\n", front());
+        }
+        else if (strcmp(cmd, "back") == 0) {
+            printf("%d\n", back());
+        }
+    }
+
+    return 0;
+}
 
