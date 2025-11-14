@@ -1,1 +1,20 @@
 
+
+#define _CRT_SECURE_NO_WARNINGS //윈도우 진정시켜주고
+#include <stdio.h>
+
+int main(){
+
+    FILE* fp = fopen("data.txt", "wt"); //파일 열고
+    if(fp == NULL) { //오류검사 ㄱㄱ
+        printf("Failed to open file"); //검사 답
+
+        return -1; //에러 종료
+    }
+    fputc('A', fp); //쓰고 싶은 문자와 위치, 그러면 문자는 바꿔도 상관없겠네
+    fputc('B', fp);
+    fputc('C', fp);
+
+    fclose(fp);
+    return 0;
+}
