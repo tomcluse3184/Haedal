@@ -1,5 +1,4 @@
-
-
+// 1. 문자 하나씩 텍스트 파일에 출력하는 코드
 #define _CRT_SECURE_NO_WARNINGS //윈도우 진정시켜주고
 #include <stdio.h>
 
@@ -18,3 +17,107 @@ int main(){
     fclose(fp);
     return 0;
 }
+
+
+//2. 파일에서 문자 하나씩 읽어오는 코드
+#define _CRT_SECURE_NO_WARNINGS //윈도우 진정시켜주고
+#include <stdio.h>
+
+int main(){
+
+    char ch;
+
+    FILE* fp = fopen("C:/KHS_CODE/C_VS2022/ch5/ex1/data.txt", "rt"); //파일 열고
+    if(fp == NULL) { //오류검사 ㄱㄱ
+        printf("Failed to open file"); //검사 답
+        return -1; //에러 종료
+    }
+    
+for (int i = 0; i < 3; i++) { //이해불가 영역
+ch = fgetc(fp);
+printf("%c\n, ch);
+}
+
+    fclose(fp);
+    return 0; //종료
+}
+
+
+//3. 파일 복사 코드
+#define _CRT_SECURE_NO_WARNINGS //윈도우 진정시켜주고
+#include <stdio.h>
+
+int main()
+{
+    FILE* org = fopen("input.txt", "rt"); //복사할 파일 
+    FILE* copy = fopen("output.txt", "wt"); //복사 결과 저장될 파일
+    char str[20]
+
+    if(org == NULL , copy == NULL) //두 파일 열렸나 함 보고
+    { 
+        printf("Failed to open file"); //오류 메세지 
+        return -1; //에러 종료
+    }
+    
+while (fgets(str, sizeof(str), org) ! = NULL { //org파일 str크기 str저장
+fputs(str, copy);
+}
+
+if (feof(org) !=0) 
+    printf("File copied successfully"); //org가 끝이면 끝
+else
+    printf("Failed to copy file") //org 끝아니면 다시
+
+    fclose(org);
+    fclose(copy);
+    return 0; //종료
+
+
+//4. 문자/문자열이 아닌 것을 텍스트 함수로 출력
+#define _CRT_SECURE_NO_WARINGS
+#define <stdio.h>
+
+int main(void)
+{
+char name [10] //이름하고 나이 변수 선언
+int age;
+
+FILE* fp = fopen("student.txt", "wt"); //wt가 쓰기 모드로 여는건지 방금 알게됨
+
+for (int i = 0; i < 3; i++)
+{
+printf("다음 순서로 입력 (name age): "); 
+scanf("%s %d, name, &age); //입력
+getchar(); //소멸
+fprintf(fp, "%s %d\n", name, age); //출력
+}
+
+fclose(fp); //연결해제? 연결 계속하면 어캐되지
+return 0;
+}
+
+//5. 동적 할당 기본
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+int* ptr1 = (int*)malloc(sizeof(int));
+int* ptr2 = (int*)malloc(sizeof(int) *3);
+
+*ptr1 = 20;
+
+for (int i = 0; i < 3; i++)
+ptr2[i] = i;
+
+printf("%d\n", *ptr1);
+for (int i = 0; i < 3; i++)
+printf("%d", ptr2[i]
+
+free(ptr1);
+free(ptr2);
+
+return 0;
+}
+
